@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 public class Question {
@@ -16,7 +15,7 @@ public class Question {
     double p;
     double k;
     double pH;
-    Date date;
+    String date;
     String location;
     String question;
     String image;
@@ -78,11 +77,11 @@ public class Question {
         this.pH = pH;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

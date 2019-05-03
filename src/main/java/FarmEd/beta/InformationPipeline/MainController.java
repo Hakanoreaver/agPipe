@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller // This means that this class is a Controller
@@ -73,7 +72,7 @@ public class MainController {
     @PostMapping(path="query/{n}/{p}/{k}/{pH}/{date}/{location}/{userNum}/{question}/{image}")
     public @ResponseBody
     boolean makeQuery(@PathVariable double n, @PathVariable double p, @PathVariable double k, @PathVariable double pH,
-                      @PathVariable Date d, @PathVariable String location, @PathVariable int userNum, @PathVariable String question,
+                      @PathVariable String date, @PathVariable String location, @PathVariable int userNum, @PathVariable String question,
                       @PathVariable String image) {
         Question query = new Question();
         query.setAnswered(false);
@@ -81,7 +80,7 @@ public class MainController {
         query.setP(p);
         query.setK(k);
         query.setpH(pH);
-        query.setDate(d);
+        query.setDate(date);
         query.setLocation(location);
         query.setUserNum(userNum);
         query.setQuestion(question);
@@ -130,7 +129,7 @@ public class MainController {
             }
         }
         return strings;
-    } 
+    }
 
 
 }
