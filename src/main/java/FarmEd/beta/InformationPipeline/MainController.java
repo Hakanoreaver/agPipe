@@ -43,15 +43,15 @@ public class MainController {
     @CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path = "/login/{username}/{password}")
     public @ResponseBody
-    boolean logIn(@PathVariable String username, @PathVariable String password) {
+    int logIn(@PathVariable String username, @PathVariable String password) {
         User user = userRepository.findByUserName(username);
         if (user == null) {
-            return false;
+            return -1;
         }
         if (user.getPassword().equals(password)) {
-            return true;
+            return user.getId();
         } else {
-            return false;
+            return -1;
         }
     }
 
@@ -70,7 +70,7 @@ public class MainController {
         }
     }
 
-    @PostMapping(path="query/{n}/{p}/{k}/{pH}/{date}/{location}/{userNum}/{queryNum}/{image}")
+    @PostMapping(path="query/{n}/{p}/{k}/{pH}/{date}/{location}/{userNum}/{question}/{image}")
     public @ResponseBody
     boolean makeQuery(@PathVariable double n, @PathVariable double p, @PathVariable double k, @PathVariable double pH,
                       @PathVariable Date d, @PathVariable String location, @PathVariable int userNum, @PathVariable String question,
@@ -130,7 +130,7 @@ public class MainController {
             }
         }
         return strings;
-    }
+    } 
 
 
 }
