@@ -20,7 +20,7 @@ public class MainController {
         return true;
     }
 
-    @CrossOrigin(origins = "agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "http://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path = "/login/{username}/{password}")
     public @ResponseBody
     boolean logIn(@PathVariable String username, @PathVariable String password) {
