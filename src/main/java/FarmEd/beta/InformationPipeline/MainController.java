@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/main")  // This means URL's start with /main (after Application path)
-
+@CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
 public class MainController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class MainController {
         return true;
     }
 
-    @CrossOrigin(origins = "http://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path = "/login/{username}/{password}")
     public @ResponseBody
     boolean logIn(@PathVariable String username, @PathVariable String password) {
