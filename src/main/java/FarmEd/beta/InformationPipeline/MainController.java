@@ -50,6 +50,23 @@ public class MainController {
         if (user.getPassword().equals(password)) {
             return user.getId();
         } else {
+            return -2;
+        }
+    }
+
+    @CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path = "/createUser/{username}/{password}")
+    public @ResponseBody
+    int createUser(@PathVariable String username, @PathVariable String password) {
+        User user = userRepository.findByUserName(username);
+        if (user == null) {
+            User newUser = new User();
+            newUser.setUserName(username);
+            newUser.setPassword(password);
+            userRepository.save(newUser);
+            return newUser.getId();
+        }
+        else {
             return -1;
         }
     }
