@@ -15,12 +15,33 @@
 
     <script type="text/javascript">
         function load() {
-
+            var ajax = new XMLHttpRequest();
+            try {
+                ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/query/false', false);
+                ajax.send();
+                if(ajax.status == 200) {
+                    var json = JSON.parse(ajax.responseText);
+                    alert(json[1].image);
+                }
+                else {
+                    alert('loginError');
+                }
+            }
+            catch (err) {
+                window.location = "http://127.0.0.1:5000/login";
+            }
         }
 
     </script>
 </head>
 <body>
+<div style="float: middle;">
+    <h1>
+        Unanswered Questions
+    </h1>
+    <div id="requests">
 
+    </div>
+</div>
 </body>
 </html>

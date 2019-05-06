@@ -39,7 +39,7 @@ public class MainController {
         return true;
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path = "/login/{username}/{password}")
     public @ResponseBody
     int logIn(@PathVariable String username, @PathVariable String password) {
@@ -54,7 +54,7 @@ public class MainController {
         }
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:7080", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/createUser/{username}/{password}")
     public @ResponseBody
     int createUser(@PathVariable String username, @PathVariable String password) {
@@ -86,6 +86,7 @@ public class MainController {
         }
     }
 
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{n}/{p}/{k}/{pH}/{date}/{location}/{userNum}/{question}/{image}")
     public @ResponseBody
     boolean makeQuery(@PathVariable double n, @PathVariable double p, @PathVariable double k, @PathVariable double pH,
@@ -106,6 +107,7 @@ public class MainController {
         return true;
     }
 
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{username}/{password}")
     public @ResponseBody
     boolean createAccount(@PathVariable String username, @PathVariable String password) {
@@ -116,6 +118,7 @@ public class MainController {
         return true;
     }
 
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{queryNum}/{reply}")
     public @ResponseBody
     boolean createReply(@PathVariable int queryNum, @PathVariable String reply) {
@@ -125,6 +128,7 @@ public class MainController {
         return true;
     }
 
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")
     public @ResponseBody
     List<Question> getQueries(@PathVariable boolean state) {
