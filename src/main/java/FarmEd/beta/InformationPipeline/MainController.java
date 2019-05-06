@@ -87,11 +87,11 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="query/{n}/{p}/{k}/{pH}/{date}/{location}/{userNum}/{question}/{image}")
+    @PostMapping(path="query")
     public @ResponseBody
-    boolean makeQuery(@PathVariable double n, @PathVariable double p, @PathVariable double k, @PathVariable double pH,
-                      @PathVariable String date, @PathVariable String location, @PathVariable int userNum, @PathVariable String question,
-                      @PathVariable String image) {
+    boolean makeQuery( double n,  double p, double k,  double pH,
+                       String date, String location,  int userNum,  String question,
+                       String image) {
         Question query = new Question();
         query.setAnswered(false);
         query.setN(n);
