@@ -1,1 +1,1 @@
-INSERT INTO user VALUES (1, "password", "admin");
+INSERT INTO admin VALUES (1, "farmED123UOW", "Admin");

@@ -20,9 +20,14 @@
             var ajax = new XMLHttpRequest();
             //ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/login' + u + '/' + p,false, "root", "password");
             try {
-                ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/isServerRunning', false);
+                ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/loginAdmin/' + u + '/' + p, false);
                 ajax.send();
-                alert(ajax.responseText);
+                if(ajax.responseText == 'true') {
+                    window.load('Requests.html')
+                }
+                else {
+                    alert('loginError');
+                }
             }
             catch (err) {
                 window.location = "http://127.0.0.1:5000/login";
@@ -41,7 +46,7 @@
 </div>
 <div class="row">
     <div class="col-sm-4"></div>
-    <div class="col-sm-4" align="middle" style="background-color: #7158ef; padding: 30px; border-radius: 15px; float : middle">
+    <div class="col-sm-4" align="middle" style="background-color: #7158ef; padding: 30px; border-radius: 15px;">
         <h1> Log In </h1>
         <input id="username" ng-model="username" placeholder="Username" style="margin-top: 20px; border-radius: 5px">  </input>
         <br>
