@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/main")  // This means URL's start with /main (after Application path)
-@CrossOrigin(origins = "https://agriculturepipeline.com/", allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
 public class MainController {
 
     @Autowired
@@ -71,7 +71,7 @@ public class MainController {
         }
     }
 
-    @CrossOrigin(origins = "https://agriculturepipeline.com/", allowedHeaders = "*", allowCredentials = "true")
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path = "/loginAdmin/{username}/{password}")
     public @ResponseBody
     boolean logInAdmin(@PathVariable String username, @PathVariable String password) {
