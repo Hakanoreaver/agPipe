@@ -89,7 +89,7 @@ public class MainController {
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query")
     public @ResponseBody
-    boolean makeQuery( double n,  double p, double k,  double pH,
+    boolean makeQuery(double n,  double p, double k,  double pH,
                        String date, String location,  int userNum,  String question,
                        String image) {
         Question query = new Question();
