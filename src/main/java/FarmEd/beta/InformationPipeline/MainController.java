@@ -131,8 +131,15 @@ public class MainController {
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")
     public @ResponseBody
-    List<Question> getQueries(@PathVariable boolean state) {
+    List<Question> getQueriesByState(@PathVariable boolean state) {
         return queryRepository.findByAnswered(state);
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @GetMapping(path="query/all")
+    public @ResponseBody
+    Iterable<Question> getQueries() {
+        return queryRepository.findAll();
     }
 
     @GetMapping(path="getResponses/{userId}")
