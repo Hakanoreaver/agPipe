@@ -86,25 +86,43 @@ public class MainController {
         }
     }
 
+    /**
+     *
+     * @param n
+     * @param p
+     * @param k
+     * @param pH
+     * @param date
+     * @param location
+     * @param userNum
+     * @param question
+     * @param image
+     * @return
+     */
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query")
     public @ResponseBody
-    boolean makeQuery(double n,  double p, double k,  double pH,
+    String makeQuery(double n,  double p, double k,  double pH,
                        String date, String location,  int userNum,  String question,
                        String image) {
-        Question query = new Question();
-        query.setAnswered(false);
-        query.setN(n);
-        query.setP(p);
-        query.setK(k);
-        query.setpH(pH);
-        query.setDate(date);
-        query.setLocation(location);
-        query.setUserNum(userNum);
-        query.setQuestion(question);
-        query.setImage(image);
-        queryRepository.save(query);
-        return true;
+        try {
+            Question query = new Question();
+            query.setAnswered(false);
+            query.setN(n);
+            query.setP(p);
+            query.setK(k);
+            query.setpH(pH);
+            query.setDate(date);
+            query.setLocation(location);
+            query.setUserNum(userNum);
+            query.setQuestion(question);
+            query.setImage(image);
+            queryRepository.save(query);
+            return "true";
+        }
+        catch(Exception e) {
+            return e.toString();
+        }
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
