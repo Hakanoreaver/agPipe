@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/main")  // This means URL's start with /main (after Application path)
@@ -145,6 +146,15 @@ public class MainController {
         response.setQueryNum(queryNum);
         return true;
     }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path="query/{queryNum}/")
+    public @ResponseBody
+    Optional<Question> getQuestion(@PathVariable int queryNum) {
+        Optional<Question> temp = queryRepository.findById(queryNum);
+        return temp;
+    }
+
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")

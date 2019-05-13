@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>FarmEd Pipeline</title>
+        <script type="text/javascript">
+            var id;
+            function load() {
+                id = localStorage.getItem('farmEdQueryNum');
+            }
+        </script>
+    </head>
+
+    <body onload=load()>
+        <h1> Reply Screen </h1>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <span id="n"></span>
+                <span id="p"></span>
+                <span id="k"></span>
+                <span id="pH"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <span id="date"></span>
+                <span id="location"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <span id="question"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <span id="image"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <textarea id="reply"> </textarea>
+                <button>Send Reply</button>
+            </div>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

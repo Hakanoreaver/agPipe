@@ -26,7 +26,7 @@
                         tr.appendChild(th);
                         var td1 = document.createElement("td");
                         td1.innerHTML = json[i].n;
-                        var td2 = document.creaeElement("td");
+                        var td2 = document.createElement("td");
                         td2.innerHTML = json[i].p;
                         var td3 = document.createElement("td");
                         td3.innerHTML = json[i].k;
@@ -42,6 +42,11 @@
                         td8.innerHTML = json[i].image;
                         var button = document.createElement("button");
                         button.id = json[i].id;
+                        button.onclick = function() {
+                            localStorage.setItem('farmEdQueryNum', button.id);
+                            window.location = 'sendReply.html'
+                        }
+                        button.innerHTML = "Reply";
                         tr.appendChild(td1);
                         tr.appendChild(td2);
                         tr.appendChild(td3);
@@ -80,54 +85,23 @@
                       <div class="col-sm-10" id=two>
                             <table class="table table-striped">
                                     <thead>
-                                      <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">N</th>
-                                        <th scope="col">P</th>
-                                        <th scope="col">K</th>
-                                        <th scope="col">pH</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Question</th>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Button</th>
-                                        <th scope="col"></th>
-                                      </tr>
-                                    </thead>
-                                    <tbody id="requests">
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td><img src="https://www.tflguide.com/wp-content/uploads/2015/10/the-law-of-farm.jpg" style="width: 300px; height: 300px"> </img></td>
-                                        <td><button data-toggle="modal" data-target="#myModal">Reply</button></td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                        <td><button data-toggle="modal" data-target="#myModal">Reply</button></td>
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                        <td><button data-toggle="modal" data-target="#myModal">Reply</button></td>
-                                      </tr>
-                                    </tbody>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">N</th>
+                                <th scope="col">P</th>
+                                <th scope="col">K</th>
+                                <th scope="col">pH</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Button</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                                <tbody id="requests">
+
+                                </tbody>
                                   </table>
         
                       </div>
