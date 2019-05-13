@@ -1,14 +1,8 @@
-package FarmEd.beta.InformationPipeline.Queries;
+package FarmEd.beta.InformationPipeline.Models;
 
-import FarmEd.beta.InformationPipeline.Models.QuestionResponse;
 
-import javax.persistence.*;
 
-@Entity
-public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+public class QuestionResponse {
     int userNum;
     double n;
     double p;
@@ -17,24 +11,22 @@ public class Question {
     String date;
     String location;
     String question;
-    @Column(length=1000000)
     String image;
-    boolean answered;
 
-    public boolean isAnswered() {
-        return answered;
+    public QuestionResponse() {
+        super();
     }
 
-    public void setAnswered(boolean answered) {
-        this.answered = answered;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public QuestionResponse(int userNum, double n, double p, double k, double pH, String date, String location, String question, String image) {
+        this.userNum = userNum;
+        this.n = n;
+        this.p = p;
+        this.k = k;
+        this.pH = pH;
+        this.date = date;
+        this.location = location;
+        this.question = question;
+        this.image = image;
     }
 
     public int getUserNum() {
@@ -108,4 +100,11 @@ public class Question {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "QuestoinRespons [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH + ", date="
+                + date +  ", location=" + location + ", question=" + question +  ", image=" + image + "]";
+    }
+
 }

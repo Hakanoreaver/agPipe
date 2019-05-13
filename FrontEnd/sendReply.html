@@ -1,92 +1,111 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-    <head>
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/style.css">
-        <title>FarmEd Pipeline</title>
-        <script type="text/javascript">
-            var id;
-            function load() {
-                id = localStorage.getItem('farmEdQueryNum');
-                var ajax = new XMLHttpRequest();
-                try {
-                    ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/query/' + id, false);
-                    ajax.send();
-                    if(ajax.status == 200) {
-                        var json = JSON.parse(ajax.responseText);
-                        document.getElementById("n").innerHTML = json.n;
-                        document.getElementById("p").innerHTML = json.p;
-                        document.getElementById("k").innerHTML = json.k;
-                        document.getElementById("ph").innerHTML = json.pH;
-                        document.getElementById("date").innerHTML = json.date;
-                        document.getElementById("location").innerHTML = json.location;
-                        document.getElementById("question").innerHTML = json.question;
-                        document.getElementById("image").innerHTML = json.image;
-                    }
-                    else {
-                        alert('loginError');
-                    }
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>FarmEd Pipeline</title>
+    <script type="text/javascript">
+        var id;
+        function load() {
+            id = localStorage.getItem('farmEdQueryNum');
+            var ajax = new XMLHttpRequest();
+            try {
+                ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/queryFind/' + id, false);
+                ajax.send();
+                if(ajax.status == 200) {
+                    var json = JSON.parse(ajax.responseText);
+                    document.getElementById("n").innerHTML = "Nitrogen - " + json.n;
+                    document.getElementById("p").innerHTML = "Phosphorus - " + json.p;
+                    document.getElementById("k").innerHTML = "Potassium - " + json.k;
+                    document.getElementById("pH").innerHTML = "pH - " + json.pH;
+                    document.getElementById("date").innerHTML = "Date - " + json.date;
+                    document.getElementById("location").innerHTML = "Location - " + json.location;
+                    document.getElementById("question").innerHTML = "Question - " + json.question;
+                    document.getElementById("image").innerHTML = json.image;
                 }
-                catch (err) {
-                    alert(err);
+                else {
+                    alert('loginError');
                 }
-
             }
-        </script>
-    </head>
+            catch (err) {
+                alert(err);
+            }
 
-    <body onload=load()>
-        <h1> Reply Screen </h1>
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-                <span id="n"></span>
-                <span id="p"></span>
-                <span id="k"></span>
-                <span id="pH"></span>
-            </div>
-        </div>
+        }
+    </script>
+    <style>
+        .myDiv{
+            margin-right: 50px;
+            font-size: 20pt;
+        }
 
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-                <span id="date"></span>
-                <span id="location"></span>
-            </div>
-        </div>
+        .questionDiv{
+            font-size: 16pt;
+        }
+    </style>
+</head>
 
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-                <span id="question"></span>
-            </div>
-        </div>
+<body onload=load()>
 
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-                <span id="image"></span>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-pr">
+    <a class="navbar-brand text-white" href="#"><img src="img/PEV.png" id="navbar-img" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-6">
-                <textarea id="reply"> </textarea>
-                <button>Send Reply</button>
-            </div>
-        </div>
+</nav>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </body>
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" align="middle">
+        <span id="n" class="text-info myDiv"></span>
+        <span id="p" class="text-info myDiv"></span>
+        <span id="k" class="text-info myDiv"></span>
+        <span id="pH" class="text-info myDiv"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" align="middle">
+        <span id="date" class="text-info myDiv"></span>
+        <span id="location" class="text-info myDiv"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6 card" align="left">
+        <span id="question" class="text-success questionDiv"> </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" align="middle">
+        <span id="image"></span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" align="middle">
+        <textarea id="reply" style="width: 100%; height: 200px"> </textarea>
+        <br />
+        <button>Send Reply</button>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,5 +1,6 @@
 package FarmEd.beta.InformationPipeline;
 
+import FarmEd.beta.InformationPipeline.Models.QuestionResponse;
 import FarmEd.beta.InformationPipeline.Queries.Question;
 import FarmEd.beta.InformationPipeline.Queries.QuestionRepository;
 import FarmEd.beta.InformationPipeline.Responses.Response;
@@ -127,6 +128,13 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path="query/add")
+    public @ResponseBody
+    String addQuery(@RequestBody QuestionResponse response) {
+        return response.getImage();
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{username}/{password}")
     public @ResponseBody
     boolean createAccount(@PathVariable String username, @PathVariable String password) {
@@ -153,6 +161,12 @@ public class MainController {
     Question getQuestion(@PathVariable String queryNum) {
         Question temp = queryRepository.findById(Integer.parseInt(queryNum));
         return temp;
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path="queryFind/{queryNum}")
+    public void postTest(@RequestBody QuestionResponse response) {
+        System.out.println(response.getImage());
     }
 
 
