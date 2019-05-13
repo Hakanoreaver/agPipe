@@ -131,7 +131,24 @@ public class MainController {
     @PostMapping(path="query/add")
     public @ResponseBody
     String addQuery(@RequestBody QuestionResponse response) {
-        return response.getImage();
+        try {
+            Question query = new Question();
+            query.setAnswered(false);
+            query.setN(response.getN());
+            query.setP(response.getP());
+            query.setK(response.getK());
+            query.setpH(response.getpH());
+            query.setDate(response.getDate());
+            query.setLocation(response.getLocation());
+            query.setUserNum(response.getUserNum());
+            query.setQuestion(response.getQuestion());
+            query.setImage(response.getImage());
+            queryRepository.save(query);
+            return "true";
+        }
+        catch(Exception e) {
+            return e.toString();
+        }
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
