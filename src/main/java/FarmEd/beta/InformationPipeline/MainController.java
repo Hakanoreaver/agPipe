@@ -148,7 +148,7 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="queryFind/{queryNum}")
+    @GetMapping(path="queryFind/{queryNum}")
     public @ResponseBody
     Question getQuestion(@PathVariable String queryNum) {
         Question temp = queryRepository.findById(Integer.parseInt(queryNum));
