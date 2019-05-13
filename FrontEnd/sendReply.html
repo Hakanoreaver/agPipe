@@ -11,6 +11,29 @@
             var id;
             function load() {
                 id = localStorage.getItem('farmEdQueryNum');
+                var ajax = new XMLHttpRequest();
+                try {
+                    ajax.open('GET', 'https://agriculturepipeline.herokuapp.com/main/query/' + id, false);
+                    ajax.send();
+                    if(ajax.status == 200) {
+                        var json = JSON.parse(ajax.responseText);
+                        document.getElementById("n").innerHTML = json.n;
+                        document.getElementById("p").innerHTML = json.p;
+                        document.getElementById("k").innerHTML = json.k;
+                        document.getElementById("ph").innerHTML = json.pH;
+                        document.getElementById("date").innerHTML = json.date;
+                        document.getElementById("location").innerHTML = json.location;
+                        document.getElementById("question").innerHTML = json.question;
+                        document.getElementById("image").innerHTML = json.image;
+                    }
+                    else {
+                        alert('loginError');
+                    }
+                }
+                catch (err) {
+                    alert(err);
+                }
+
             }
         </script>
     </head>
