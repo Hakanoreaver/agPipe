@@ -17,6 +17,7 @@
                 ajax.send();
                 if(ajax.status == 200) {
                     var json = JSON.parse(ajax.responseText);
+                    document.getElementById("image").src = "data:image/png;base64," + json.image;
                     document.getElementById("n").innerHTML = "Nitrogen - " + json.n;
                     document.getElementById("p").innerHTML = "Phosphorus - " + json.p;
                     document.getElementById("k").innerHTML = "Potassium - " + json.k;
@@ -24,7 +25,7 @@
                     document.getElementById("date").innerHTML = "Date - " + json.date;
                     document.getElementById("location").innerHTML = "Location - " + json.location;
                     document.getElementById("question").innerHTML = "Question - " + json.question;
-                    document.getElementById("image").innerHTML = json.image;
+
                 }
                 else {
                     alert('loginError');
@@ -38,7 +39,7 @@
     </script>
     <style>
         .myDiv{
-            margin-right: 50px;
+            margin: 20px;
             font-size: 20pt;
         }
 
@@ -57,6 +58,14 @@
     </button>
 
 </nav>
+
+<div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6" align="middle" style="text-align: center">
+        <img src="" id="image" style="display: block; margin: 20px auto; width: 85%"/>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-sm-3">
@@ -83,14 +92,6 @@
     </div>
     <div class="col-sm-6 card" align="left">
         <span id="question" class="text-success questionDiv"> </span>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-6" align="middle">
-        <span id="image"></span>
     </div>
 </div>
 
