@@ -103,7 +103,7 @@ public class QuestionResponse {
 
     @Override
     public String toString() {
-        return "QuestoinRespons [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH + ", date="
+        return "QuestionResponse [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH + ", date="
                 + date +  ", location=" + location + ", question=" + question +  ", image=" + image + "]";
     }
 
