@@ -1,6 +1,6 @@
 package FarmEd.beta.InformationPipeline;
 
-import FarmEd.beta.InformationPipeline.Models.QuestionResponse;
+import FarmEd.beta.InformationPipeline.Models.QuestionRequest;
 import FarmEd.beta.InformationPipeline.Models.UserResponse;
 import FarmEd.beta.InformationPipeline.Queries.Question;
 import FarmEd.beta.InformationPipeline.Queries.QuestionRepository;
@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/main")  // This means URL's start with /main (after Application path)
@@ -107,49 +107,10 @@ public class MainController {
         }
     }
 
-    /**
-     *
-     * @param n
-     * @param p
-     * @param k
-     * @param pH
-     * @param date
-     * @param location
-     * @param userNum
-     * @param question
-     * @param image
-     * @return
-     */
-    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="query")
-    public @ResponseBody
-    String makeQuery(double n,  double p, double k,  double pH,
-                       String date, String location,  int userNum,  String question,
-                       String image) {
-        try {
-            Question query = new Question();
-            query.setAnswered(false);
-            query.setN(n);
-            query.setP(p);
-            query.setK(k);
-            query.setpH(pH);
-            query.setDate(date);
-            query.setLocation(location);
-            query.setUserNum(userNum);
-            query.setQuestion(question);
-            query.setImage(image);
-            queryRepository.save(query);
-            return "true";
-        }
-        catch(Exception e) {
-            return e.toString();
-        }
-    }
-
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/add")
     public @ResponseBody
-    String addQuery(@RequestBody QuestionResponse response) {
+    String addQuery(@RequestBody QuestionRequest response) {
         try {
             Question query = new Question();
             query.setAnswered(false);
@@ -201,11 +162,11 @@ public class MainController {
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="queryFind/{queryNum}")
-    public void postTest(@RequestBody QuestionResponse response) {
+    public void postTest(@RequestBody QuestionRequest response) {
         System.out.println(response.getImage());
     }
 
-
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")
     public @ResponseBody

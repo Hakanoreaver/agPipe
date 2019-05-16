@@ -2,7 +2,7 @@ package FarmEd.beta.InformationPipeline.Models;
 
 
 
-public class QuestionResponse {
+public class QuestionRequest {
     int userNum;
     double n;
     double p;
@@ -13,11 +13,11 @@ public class QuestionResponse {
     String question;
     String image;
 
-    public QuestionResponse() {
+    public QuestionRequest() {
         super();
     }
 
-    public QuestionResponse(int userNum, double n, double p, double k, double pH, String date, String location, String question, String image) {
+    public QuestionRequest(int userNum, double n, double p, double k, double pH, String date, String location, String question, String image) {
         this.userNum = userNum;
         this.n = n;
         this.p = p;

@@ -1,7 +1,5 @@
 package FarmEd.beta.InformationPipeline.Queries;
 
-import FarmEd.beta.InformationPipeline.Models.QuestionResponse;
-
 import javax.persistence.*;
 
 @Entity
