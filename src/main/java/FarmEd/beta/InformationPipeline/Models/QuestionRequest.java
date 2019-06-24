@@ -8,25 +8,63 @@ public class QuestionRequest {
     double p;
     double k;
     double pH;
-    String date;
     String location;
     String question;
     String image;
+    String pesticides;
+    String fertilisers;
+    String length;
+    String frequency;
 
     public QuestionRequest() {
         super();
     }
 
-    public QuestionRequest(int userNum, double n, double p, double k, double pH, String date, String location, String question, String image) {
+    public QuestionRequest(int userNum, double n, double p, double k, double pH, String location, String question, String image, String pesticides, String fertilisers, String length, String frequency) {
         this.userNum = userNum;
         this.n = n;
         this.p = p;
         this.k = k;
         this.pH = pH;
-        this.date = date;
         this.location = location;
         this.question = question;
         this.image = image;
+        this.pesticides = pesticides;
+        this.fertilisers = fertilisers;
+        this.length = length;
+        this.frequency = frequency;
+    }
+
+    public String getPesticides() {
+        return pesticides;
+    }
+
+    public void setPesticides(String pesticides) {
+        this.pesticides = pesticides;
+    }
+
+    public String getFertilisers() {
+        return fertilisers;
+    }
+
+    public void setFertilisers(String fertilisers) {
+        this.fertilisers = fertilisers;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    public void setLength(String length) {
+        this.length = length;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
     }
 
     public int getUserNum() {
@@ -69,14 +107,6 @@ public class QuestionRequest {
         this.pH = pH;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -103,8 +133,7 @@ public class QuestionRequest {
 
     @Override
     public String toString() {
-        return "QuestionResponse [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH + ", date="
-                + date +  ", location=" + location + ", question=" + question +  ", image=" + image + "]";
+        return "QuestionResponse [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH +  ", location=" + location + ", question=" + question +  ", image=" + image + "]";
     }
 
 }

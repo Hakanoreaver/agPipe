@@ -1,6 +1,7 @@
 package FarmEd.beta.InformationPipeline.Queries;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Question {
@@ -12,7 +13,7 @@ public class Question {
     double p;
     double k;
     double pH;
-    String date;
+    Date date;
     String location;
     String question;
     @Column(length=1000000)
@@ -75,11 +76,11 @@ public class Question {
         this.pH = pH;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

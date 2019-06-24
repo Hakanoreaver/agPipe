@@ -1,6 +1,7 @@
 package FarmEd.beta.InformationPipeline;
 
 import FarmEd.beta.InformationPipeline.Models.QuestionRequest;
+import FarmEd.beta.InformationPipeline.Models.ResponseResponse;
 import FarmEd.beta.InformationPipeline.Models.UserResponse;
 import FarmEd.beta.InformationPipeline.Queries.Question;
 import FarmEd.beta.InformationPipeline.Queries.QuestionRepository;
@@ -14,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.RequestWrapper;
 import java.io.Console;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +121,7 @@ public class MainController {
             query.setP(response.getP());
             query.setK(response.getK());
             query.setpH(response.getpH());
-            query.setDate(response.getDate());
+            query.setDate(new Date(System.currentTimeMillis()));
             query.setLocation(response.getLocation());
             query.setUserNum(response.getUserNum());
             query.setQuestion(response.getQuestion());
@@ -196,6 +199,26 @@ public class MainController {
             }
         }
         return strings;
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path="responses/add")
+    public @ResponseBody
+    void addResponse(@RequestBody ResponseResponse response) {
+        Response r = new Response();
+        r.setReply(response.getReply());
+        r.setQueryNum(r.getQueryNum());
+        responseRepository.save(r);
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path="responses/add")
+    public @ResponseBody
+    void requestPasswordReset(@RequestBody ResponseResponse response) {
+        Response r = new Response();
+        r.setReply(response.getReply());
+        r.setQueryNum(r.getQueryNum());
+        responseRepository.save(r);
     }
 
 
