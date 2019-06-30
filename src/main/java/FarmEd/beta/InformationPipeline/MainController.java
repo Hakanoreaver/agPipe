@@ -188,7 +188,7 @@ public class MainController {
         return queryRepository.findAll();
     }
 
-    @GetMapping(path="getResponses/{userId}")
+    @PostMapping(path="getResponses/{userId}")
     public @ResponseBody
     List<String> getResponses(@PathVariable int userId) {
         ArrayList<String> strings = new ArrayList<>();
