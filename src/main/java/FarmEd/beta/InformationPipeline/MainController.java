@@ -210,6 +210,7 @@ public class MainController {
         Response r = new Response();
         r.setReply(response);
         r.setQueryNum(queryNum);
+        queryRepository.setAnswered(queryNum);
         responseRepository.save(r);
     }
 
