@@ -211,16 +211,6 @@ public class MainController {
         responseRepository.save(r);
     }
 
-    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="responses/add")
-    public @ResponseBody
-    void requestPasswordReset(@RequestBody ResponseResponse response) {
-        Response r = new Response();
-        r.setReply(response.getReply());
-        r.setQueryNum(r.getQueryNum());
-        responseRepository.save(r);
-    }
-
 
 }
 
