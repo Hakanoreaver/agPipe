@@ -196,7 +196,7 @@ public class MainController {
         for(Question q : questions) {
             if (q.isAnswered()) {
                 Response r = responseRepository.findByQuery(q.getId());
-                String string = q.getId() + "^" +  q.getQuestion() + "^" +  r.getReply() + "^";
+                String string = q.getId() + " ^ " +  q.getQuestion() + " ^ " +  r.getReply() + " ^ ";
                 strings.add(string);
             }
         }
