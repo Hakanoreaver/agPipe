@@ -206,12 +206,12 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="responses/add")
+    @PostMapping(path="responses/add/{queryNum}/{response}")
     public @ResponseBody
-    void addResponse(@RequestBody ResponseResponse response) {
+    void addResponse(@PathVariable int queryNum, @PathVariable String response) {
         Response r = new Response();
-        r.setReply(response.getReply());
-        r.setQueryNum(r.getQueryNum());
+        r.setReply(response);
+        r.setQueryNum(queryNum);
         responseRepository.save(r);
     }
 
