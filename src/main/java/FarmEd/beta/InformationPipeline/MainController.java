@@ -168,7 +168,7 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="queryFind/{queryNum}")
+    @PostMapping(path="queryFind/{image}")
     public void postTest(@RequestBody QuestionRequest response) {
         System.out.println(response.getImage());
     }
