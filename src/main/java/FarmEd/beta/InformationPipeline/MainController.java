@@ -1,5 +1,6 @@
 package FarmEd.beta.InformationPipeline;
 
+import FarmEd.beta.InformationPipeline.Models.CreateRequest;
 import FarmEd.beta.InformationPipeline.Models.QuestionRequest;
 import FarmEd.beta.InformationPipeline.Models.ResponseResponse;
 import FarmEd.beta.InformationPipeline.Models.UserResponse;
@@ -76,7 +77,10 @@ public class MainController {
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/user/create")
     public @ResponseBody
-    int createUser(@RequestBody UserResponse login) {
+    int createUser(@RequestBody CreateRequest login) {
+        if(login.getPin().equals("2019")) {
+            return -2;
+        }
         User user = userRepository.findByUserName(login.getUsername());
         if (user == null) {
             User newUser = new User();

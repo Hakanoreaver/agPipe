@@ -1,16 +1,18 @@
 package FarmEd.beta.InformationPipeline.Models;
 
-public class UserResponse {
+public class CreateRequest {
     String username;
     String password;
+    String pin;
 
-    public UserResponse() {
+    public CreateRequest() {
         super();
     }
 
-    public UserResponse(String username, String password) {
+    public CreateRequest(String username, String password, String pin) {
         this.username = username;
         this.password = password;
+        this.pin = pin;
     }
 
     public String getUsername() {
@@ -27,5 +29,13 @@ public class UserResponse {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }
