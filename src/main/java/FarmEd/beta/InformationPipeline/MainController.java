@@ -78,7 +78,7 @@ public class MainController {
     @PostMapping(path = "/user/create")
     public @ResponseBody
     int createUser(@RequestBody CreateRequest login) {
-        if(login.getPin().equals("2019")) {
+        if(!login.getPin().equals("2019")) {
             return -2;
         }
         User user = userRepository.findByUserName(login.getUsername());
