@@ -1,9 +1,6 @@
 package FarmEd.beta.InformationPipeline;
 
-import FarmEd.beta.InformationPipeline.Models.CreateRequest;
-import FarmEd.beta.InformationPipeline.Models.QuestionRequest;
-import FarmEd.beta.InformationPipeline.Models.ResponseResponse;
-import FarmEd.beta.InformationPipeline.Models.UserResponse;
+import FarmEd.beta.InformationPipeline.Models.*;
 import FarmEd.beta.InformationPipeline.Queries.Question;
 import FarmEd.beta.InformationPipeline.Queries.QuestionRepository;
 import FarmEd.beta.InformationPipeline.Responses.Response;
@@ -179,6 +176,20 @@ public class MainController {
     public @ResponseBody
     List<Question> getQueriesByState(@PathVariable boolean state) {
         return queryRepository.findByAnswered(state);
+    }
+
+    @LogExecutionTime
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @GetMapping(path="query/noImage/{state}")
+    public @ResponseBody
+    List<QuestionNoImageRequest> getQueriesNoImageByState(@PathVariable boolean state) {
+        ArrayList<QuestionNoImageRequest> ret = new ArrayList<>();
+        List<Question> qs = queryRepository.findByAnswered(state);
+        for(Question q : qs) {
+            QuestionNoImageRequest t = new QuestionNoImageRequest(q);
+            ret.add(t);
+        }
+        return ret;
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")

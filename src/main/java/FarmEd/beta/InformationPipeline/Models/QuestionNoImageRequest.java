@@ -1,44 +1,52 @@
-package FarmEd.beta.InformationPipeline.Queries;
+package FarmEd.beta.InformationPipeline.Models;
 
-import javax.persistence.*;
-import java.sql.Date;
+import FarmEd.beta.InformationPipeline.Queries.Question;
 
-@Entity
-public class Question {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+public class QuestionNoImageRequest {
     int userNum;
     double n;
     double p;
     double k;
     double pH;
-    Date date;
     String location;
     String question;
     String pesticides;
     String fertilisers;
     String length;
-    String Frequency;
-    @Column(length=1000000)
-    String image;
-    boolean answered;
+    String frequency;
 
-    public boolean isAnswered() {
-        return answered;
+    public QuestionNoImageRequest() {
+        super();
     }
 
-    public void setAnswered(boolean answered) {
-        this.answered = answered;
+    public QuestionNoImageRequest(int userNum, double n, double p, double k, double pH, String location, String question, String pesticides, String fertilisers, String length, String frequency) {
+        this.userNum = userNum;
+        this.n = n;
+        this.p = p;
+        this.k = k;
+        this.pH = pH;
+        this.location = location;
+        this.question = question;
+        this.pesticides = pesticides;
+        this.fertilisers = fertilisers;
+        this.length = length;
+        this.frequency = frequency;
     }
 
-    public int getId() {
-        return id;
+    public QuestionNoImageRequest(Question q) {
+        this.userNum = q.getUserNum();
+        this.n = q.getN();
+        this.p = q.getP();
+        this.k = q.getK();
+        this.pH = q.getpH();
+        this.location = q.getLocation();
+        this.question = q.getQuestion();
+        this.pesticides = q.getPesticides();
+        this.fertilisers = q.getFertilisers();
+        this.length = q.getLength();
+        this.frequency = q.getFrequency();
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getUserNum() {
         return userNum;
@@ -80,14 +88,6 @@ public class Question {
         this.pH = pH;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -102,14 +102,6 @@ public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getPesticides() {
@@ -137,10 +129,10 @@ public class Question {
     }
 
     public String getFrequency() {
-        return Frequency;
+        return frequency;
     }
 
     public void setFrequency(String frequency) {
-        Frequency = frequency;
+        this.frequency = frequency;
     }
 }
