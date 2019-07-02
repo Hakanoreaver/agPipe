@@ -127,6 +127,10 @@ public class MainController {
             query.setUserNum(response.getUserNum());
             query.setQuestion(response.getQuestion());
             query.setImage(response.getImage());
+            query.setPesticides(response.getPesticides());
+            query.setFertilisers(response.getFertilisers());
+            query.setLength(response.getLength());
+            query.setFrequency(response.getFrequency());
             queryRepository.save(query);
             return "true";
         }
