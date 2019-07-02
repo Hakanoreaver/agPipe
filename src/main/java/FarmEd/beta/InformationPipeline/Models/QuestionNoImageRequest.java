@@ -2,12 +2,16 @@ package FarmEd.beta.InformationPipeline.Models;
 
 import FarmEd.beta.InformationPipeline.Queries.Question;
 
+import java.sql.Date;
+
 public class QuestionNoImageRequest {
+    int id;
     int userNum;
     double n;
     double p;
     double k;
     double pH;
+    Date date;
     String location;
     String question;
     String pesticides;
@@ -19,7 +23,8 @@ public class QuestionNoImageRequest {
         super();
     }
 
-    public QuestionNoImageRequest(int userNum, double n, double p, double k, double pH, String location, String question, String pesticides, String fertilisers, String length, String frequency) {
+    public QuestionNoImageRequest(int userNum, double n, double p, double k, double pH, String location, String question, String pesticides, String fertilisers, String length, String frequency, int id, Date date) {
+        this.id = id;
         this.userNum = userNum;
         this.n = n;
         this.p = p;
@@ -31,9 +36,11 @@ public class QuestionNoImageRequest {
         this.fertilisers = fertilisers;
         this.length = length;
         this.frequency = frequency;
+        this.date = date;
     }
 
     public QuestionNoImageRequest(Question q) {
+        this.id = q.getId();
         this.userNum = q.getUserNum();
         this.n = q.getN();
         this.p = q.getP();
@@ -45,6 +52,7 @@ public class QuestionNoImageRequest {
         this.fertilisers = q.getFertilisers();
         this.length = q.getLength();
         this.frequency = q.getFrequency();
+        this.date = q.getDate();
     }
 
 
@@ -134,5 +142,13 @@ public class QuestionNoImageRequest {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
