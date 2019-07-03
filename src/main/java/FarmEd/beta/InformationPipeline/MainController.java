@@ -222,6 +222,10 @@ public class MainController {
     @PostMapping(path="responses/add/{queryNum}/{response}")
     public @ResponseBody
     void addResponse(@PathVariable int queryNum, @PathVariable String response) {
+        Question q = queryRepository.findById(queryNum);
+        if(q.isAnswered()) {
+            return;
+        }
         Response r = new Response();
         r.setReply(response);
         r.setQueryNum(queryNum);
