@@ -18,12 +18,13 @@ public class QuestionNoImageRequest {
     String fertilisers;
     String length;
     String frequency;
+    String username;
 
     public QuestionNoImageRequest() {
         super();
     }
 
-    public QuestionNoImageRequest(int userNum, double n, double p, double k, double pH, String location, String question, String pesticides, String fertilisers, String length, String frequency, int id, Date date) {
+    public QuestionNoImageRequest(String username, int userNum, double n, double p, double k, double pH, String location, String question, String pesticides, String fertilisers, String length, String frequency, int id, Date date) {
         this.id = id;
         this.userNum = userNum;
         this.n = n;
@@ -37,6 +38,7 @@ public class QuestionNoImageRequest {
         this.length = length;
         this.frequency = frequency;
         this.date = date;
+        this.username = username;
     }
 
     public QuestionNoImageRequest(Question q) {
@@ -150,5 +152,21 @@ public class QuestionNoImageRequest {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

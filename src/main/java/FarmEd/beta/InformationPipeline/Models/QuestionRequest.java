@@ -15,12 +15,13 @@ public class QuestionRequest {
     String fertilisers;
     String length;
     String frequency;
+    String username;
 
     public QuestionRequest() {
         super();
     }
 
-    public QuestionRequest(int userNum, double n, double p, double k, double pH, String location, String question, String image, String pesticides, String fertilisers, String length, String frequency) {
+    public QuestionRequest(String username, int userNum, double n, double p, double k, double pH, String location, String question, String image, String pesticides, String fertilisers, String length, String frequency) {
         this.userNum = userNum;
         this.n = n;
         this.p = p;
@@ -32,6 +33,7 @@ public class QuestionRequest {
         this.pesticides = pesticides;
         this.fertilisers = fertilisers;
         this.length = length;
+        this.username = username;
         this.frequency = frequency;
     }
 
@@ -129,6 +131,14 @@ public class QuestionRequest {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

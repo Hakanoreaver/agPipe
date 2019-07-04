@@ -140,17 +140,6 @@ public class MainController {
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
-    @PostMapping(path="query/{username}/{password}")
-    public @ResponseBody
-    boolean createAccount(@PathVariable String username, @PathVariable String password) {
-        User user = new User();
-        user.setPassword(password);
-        user.setUserName(username);
-        userRepository.save(user);
-        return true;
-    }
-
-    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{queryNum}/{reply}")
     public @ResponseBody
     boolean createReply(@PathVariable int queryNum, @PathVariable String reply) {
@@ -163,9 +152,24 @@ public class MainController {
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="queryFind/{queryNum}")
     public @ResponseBody
-    Question getQuestion(@PathVariable String queryNum) {
+    QuestionRequest getQuestion(@PathVariable String queryNum) {
         Question temp = queryRepository.findById(Integer.parseInt(queryNum));
-        return temp;
+        QuestionRequest qr = new QuestionRequest();
+        qr.setFertilisers(temp.getFertilisers());
+        qr.setFrequency(temp.getFrequency());
+        qr.setImage(temp.getImage());
+        qr.setK(temp.getK());
+        qr.setLength(temp.getLength());
+        qr.setN(temp.getN());
+        qr.setP(temp.getP());
+        qr.setPesticides(temp.getPesticides());
+        qr.setpH(temp.getpH());
+        qr.setQuestion(temp.getQuestion());
+        qr.setLocation(temp.getLocation());
+        qr.setUserNum(temp.getUserNum());
+        User u = userRepository.findById(temp.getUserNum());
+        qr.setUsername(u.getUserName());
+        return qr;
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
@@ -191,6 +195,8 @@ public class MainController {
         List<Question> qs = queryRepository.findByAnswered(state);
         for(Question q : qs) {
             QuestionNoImageRequest t = new QuestionNoImageRequest(q);
+            User u = userRepository.findById(q.getUserNum());
+            t.setUsername(u.getUserName());
             ret.add(t);
         }
         return ret;
