@@ -178,7 +178,7 @@ public class MainController {
         System.out.println(response.getImage());
     }
 
-    @LogExecutionTime
+
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")
     public @ResponseBody
@@ -186,7 +186,7 @@ public class MainController {
         return queryRepository.findByAnswered(state);
     }
 
-    @LogExecutionTime
+
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/noImage/{state}")
     public @ResponseBody
