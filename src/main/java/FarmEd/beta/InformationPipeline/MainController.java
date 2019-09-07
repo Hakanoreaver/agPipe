@@ -66,6 +66,14 @@ public class MainController {
         }
     }
 
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path = "/user/find/{userId}")
+    public @ResponseBody
+    User getUser(@PathVariable int userId) {
+        User user = userRepository.findById(userId);
+        return user;
+    }
+
     /**
      * Function to create a user
      * @param login
