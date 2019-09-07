@@ -5,6 +5,7 @@ import FarmEd.beta.InformationPipeline.Queries.Question;
 import FarmEd.beta.InformationPipeline.Queries.QuestionRepository;
 import FarmEd.beta.InformationPipeline.Responses.Response;
 import FarmEd.beta.InformationPipeline.Responses.ResponseRepository;
+import FarmEd.beta.InformationPipeline.Responses.UserUpdateRespone;
 import FarmEd.beta.InformationPipeline.Users.Admin;
 import FarmEd.beta.InformationPipeline.Users.AdminRepository;
 import FarmEd.beta.InformationPipeline.Users.User;
@@ -64,6 +65,13 @@ public class MainController {
         } else {
             return -2;
         }
+    }
+
+    @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
+    @PostMapping(path = "/user/update")
+    public @ResponseBody
+    void updateUser(@RequestBody UserUpdateRespone u) {
+        userRepository.updateUser(u.getId(), u.getFarmName(), u.getProvince(), u.getDivision(), u.getExtent(), u.getC(), u.getN(), u.getP(), u.getK(), u.getpH(), u.isSoilTest(), u.getMicronutrients(), u.getWaterSource(), u.getAggrozone());
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
