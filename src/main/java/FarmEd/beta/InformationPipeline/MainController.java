@@ -227,17 +227,16 @@ public class MainController {
 
     @PostMapping(path="getResponses/{userId}")
     public @ResponseBody
-    List<String> getResponses(@PathVariable int userId) {
-        ArrayList<String> strings = new ArrayList<>();
+    List<ResponseResponse> getResponses(@PathVariable int userId) {
+        ArrayList<ResponseResponse> responses = new ArrayList<>();
         List<Question> questions = queryRepository.findByUser(userId);
         for(Question q : questions) {
             if (q.isAnswered()) {
                 Response r = responseRepository.findByQuery(q.getId());
-                String string = q.getId() + "^" +  q.getQuestion() + "^" +  r.getReply() + "^";
-                strings.add(string);
+                responses.add(new ResponseResponse(q.getId(), r.getReply(), q.getQuestion()));
             }
         }
-        return strings;
+        return responses;
     }
 
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
