@@ -41,6 +41,7 @@ public class MainController {
      * Function to 'ping' the server and check if it is running
      * @return
      */
+    @LogExecutionTime
     @GetMapping(path = "/isServerRunning")
     public @ResponseBody
     boolean sendTest() {
@@ -52,6 +53,7 @@ public class MainController {
      * @param login
      * @return
      */
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/user/login")
     public @ResponseBody
@@ -67,6 +69,7 @@ public class MainController {
         }
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/user/update")
     public @ResponseBody
@@ -74,6 +77,7 @@ public class MainController {
         userRepository.updateUser(u.getId(), u.getFarmName(), u.getProvince(), u.getDivision(), u.getExtent(), u.getC(), u.getN(), u.getP(), u.getK(), u.getpH(), u.isSoilTest(), u.getMicronutrients(), u.getWaterSource(), u.getAggrozone());
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/user/find/{userId}")
     public @ResponseBody
@@ -87,6 +91,7 @@ public class MainController {
      * @param login
      * @return
      */
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/user/create")
     public @ResponseBody
@@ -112,6 +117,7 @@ public class MainController {
      * @param login
      * @return
      */
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path = "/admin/login")
     public @ResponseBody
@@ -127,6 +133,7 @@ public class MainController {
         }
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/add")
     public @ResponseBody
@@ -155,6 +162,7 @@ public class MainController {
         }
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="query/{queryNum}/{reply}")
     public @ResponseBody
@@ -165,6 +173,7 @@ public class MainController {
         return true;
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="queryFind/{queryNum}")
     public @ResponseBody
@@ -188,13 +197,14 @@ public class MainController {
         return qr;
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @PostMapping(path="queryFind/{image}")
     public void postTest(@RequestBody QuestionRequest response) {
         System.out.println(response.getImage());
     }
 
-
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/{state}")
     public @ResponseBody
@@ -202,7 +212,7 @@ public class MainController {
         return queryRepository.findByAnswered(state);
     }
 
-
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/noImage/{state}")
     public @ResponseBody
@@ -218,6 +228,7 @@ public class MainController {
         return ret;
     }
 
+    @LogExecutionTime
     @CrossOrigin(origins = "https://agriculturepipeline.com", allowedHeaders = "*", allowCredentials = "true")
     @GetMapping(path="query/all")
     public @ResponseBody
@@ -225,6 +236,7 @@ public class MainController {
         return queryRepository.findAll();
     }
 
+    @LogExecutionTime
     @PostMapping(path="getResponses/{userId}")
     public @ResponseBody
     List<ResponseResponse> getResponses(@PathVariable int userId) {
