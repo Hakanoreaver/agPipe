@@ -222,8 +222,8 @@ public class MainController {
         List<Question> qs = queryRepository.findByAnswered(state);
         for(Question q : qs) {
             QuestionNoImageRequest t = new QuestionNoImageRequest(q);
-            User u = userRepository.findById(q.getUserNum());
-            t.setUsername(u.getUserName());
+            //User u = userRepository.findById(q.getUserNum());
+            //t.setUsername(u.getUserName());
             ret.add(t);
         }
         return ret;
