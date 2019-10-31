@@ -9,7 +9,6 @@ public class QuestionRequest {
     double p;
     double k;
     double pH;
-    Date date;
     String location;
     String question;
     String image;
@@ -23,7 +22,7 @@ public class QuestionRequest {
         super();
     }
 
-    public QuestionRequest(String username, int userNum, double n, double p, double k, double pH, Date date, String location, String question, String image, String pesticides, String fertilisers, String length, String frequency) {
+    public QuestionRequest(String username, int userNum, double n, double p, double k, double pH,  String location, String question, String image, String pesticides, String fertilisers, String length, String frequency) {
         this.userNum = userNum;
         this.n = n;
         this.p = p;
@@ -37,7 +36,6 @@ public class QuestionRequest {
         this.length = length;
         this.username = username;
         this.frequency = frequency;
-        this.date = date;
     }
 
     public String getPesticides() {
@@ -149,11 +147,4 @@ public class QuestionRequest {
         return "QuestionResponse [userNum=" + userNum +  ", n=" + n + ", p=" + p  + ", k=" + k +  ", pH=" + pH +  ", location=" + location + ", question=" + question +  ", image=" + image + "]";
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

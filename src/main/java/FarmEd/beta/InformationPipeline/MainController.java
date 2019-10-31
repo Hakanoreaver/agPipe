@@ -112,6 +112,7 @@ public class MainController {
         }
     }
 
+
     /**
      * Function to log in an admin
      * @param login
@@ -194,7 +195,6 @@ public class MainController {
         qr.setUserNum(temp.getUserNum());
         User u = userRepository.findById(temp.getUserNum());
         qr.setUsername(u.getUserName());
-        qr.setDate(temp.getDate());
         return qr;
     }
 
